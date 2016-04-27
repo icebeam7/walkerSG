@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalkerSG.Pages.WeekStatsPage"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms">
+  <TabbedPage.BackgroundColor>
+    <OnPlatform x:TypeArguments="Color" WinPhone="#FFA500"></OnPlatform>
+  </TabbedPage.BackgroundColor>
+  <TabbedPage.Children>
+    <ContentPage Title="Stats">
+      <ScrollView>
+        <StackLayout Padding="10">
+          <StackLayout>
+            <Label Text="Week stats" FontSize="40"/>
+          </StackLayout>
+          <StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="EndAndExpand">
+              <Label x:Name="lblSteps" FontSize="32" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+              <Label Text=" steps" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="EndAndExpand">
+              <Label x:Name="lblCalories" FontSize="32" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+              <Label Text=" calories" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="EndAndExpand">
+              <Label x:Name="lblDistance" FontSize="32" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+              <Label Text=" m" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+            </StackLayout>
+          </StackLayout>
+
+          <StackLayout Padding="5">
+            <Label Text="Overall stats" FontSize="40"/>
+          </StackLayout>
+          <StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="EndAndExpand">
+              <Label x:Name="lblTotalSteps" FontSize="32" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+              <Label Text=" steps" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="EndAndExpand">
+              <Label x:Name="lblTotalCalories" FontSize="32" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+              <Label Text=" calories" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5" HorizontalOptions="EndAndExpand">
+              <Label x:Name="lblTotalDistance" FontSize="32" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+              <Label Text=" m" HorizontalTextAlignment="End" VerticalTextAlignment="End"/>
+            </StackLayout>
+          </StackLayout>
+          <Button Text="Share" Clicked="btnShare_Clicked" x:Name="btnShare"/>
+        </StackLayout>
+      </ScrollView>
+    </ContentPage>
+
+    <ContentPage Title="Results" x:Name="tbpToday">
+      <chart:SfChart x:Name="chartResults" BackgroundColor="White">
+        <chart:SfChart.Legend>
+          <chart:ChartLegend/>
+        </chart:SfChart.Legend>
+
+        <chart:SfChart.Title>
+          <chart:ChartTitle Text="This week's step results" TextColor="Blue"/>
+        </chart:SfChart.Title>
+
+        <chart:PieSeries x:Name="pieSeries" EnableAnimation="True" Label="Results" XBindingPath="Result" YBindingPath="Count">
+          <chart:PieSeries.ColorModel>
+            <chart:ChartColorModel Palette="Custom">
+              <chart:ChartColorModel.CustomBrushes>
+                <Color x:FactoryMethod="FromHex">
+                  <x:Arguments>
+                    <x:String>#006632</x:String>
+                  </x:Arguments>
+                </Color>
+                <Color x:FactoryMethod="FromHex">
+                  <x:Arguments>
+                    <x:String>#F86755</x:String>
+                  </x:Arguments>
+                </Color>
+              </chart:ChartColorModel.CustomBrushes>
+            </chart:ChartColorModel>
+          </chart:PieSeries.ColorModel>
+
+          <chart:PieSeries.DataMarker>
+            <chart:ChartDataMarker ShowLabel="True">
+              <chart:ChartDataMarker.LabelStyle>
+                <chart:DataMarkerLabelStyle TextColor="Blue" BackgroundColor="Aqua" Margin="5">
+                  <chart:DataMarkerLabelStyle.Font>
+                    <Font FontSize="12"/>
+                  </chart:DataMarkerLabelStyle.Font>
+                </chart:DataMarkerLabelStyle>
+              </chart:ChartDataMarker.LabelStyle>
+            </chart:ChartDataMarker>
+          </chart:PieSeries.DataMarker>
+        </chart:PieSeries>
+      </chart:SfChart>
+    </ContentPage>
+
+    <ContentPage Title="Steps">
+      <chart:SfChart x:Name="chartSteps" BackgroundColor="White">
+        <chart:SfChart.Legend>
+          <chart:ChartLegend/>
+        </chart:SfChart.Legend>
+
+        <chart:SfChart.Title>
+          <chart:ChartTitle Text="This week's steps" TextColor="Blue"/>
+        </chart:SfChart.Title>
+
+        <chart:PieSeries x:Name="StepsSeries" EnableAnimation="True" Label="Results" XBindingPath="Result" YBindingPath="Count">
+          <chart:PieSeries.DataMarker>
+            <chart:ChartDataMarker ShowLabel="True">
+              <chart:ChartDataMarker.LabelStyle>
+                <chart:DataMarkerLabelStyle TextColor="Blue" BackgroundColor="Aqua" Margin="5">
+                  <chart:DataMarkerLabelStyle.Font>
+                    <Font FontSize="12"/>
+                  </chart:DataMarkerLabelStyle.Font>
+                </chart:DataMarkerLabelStyle>
+              </chart:ChartDataMarker.LabelStyle>
+            </chart:ChartDataMarker>
+          </chart:PieSeries.DataMarker>
+        </chart:PieSeries>
+      </chart:SfChart>
+    </ContentPage>
+
+    <ContentPage Title="Calories" x:Name="cpCalories">
+      <chart:SfChart x:Name="chartCalories" BackgroundColor="White">
+        <chart:SfChart.Legend>
+          <chart:ChartLegend/>
+        </chart:SfChart.Legend>
+        <chart:SfChart.Title>
+          <chart:ChartTitle Text="This week's calories" TextColor="Blue"/>
+        </chart:SfChart.Title>
+        <chart:PieSeries x:Name="CaloriesSeries" EnableAnimation="True" Label="Results" XBindingPath="Result" YBindingPath="Count">
+          <chart:PieSeries.DataMarker>
+            <chart:ChartDataMarker ShowLabel="True">
+              <chart:ChartDataMarker.LabelStyle>
+                <chart:DataMarkerLabelStyle TextColor="Blue" BackgroundColor="Aqua" Margin="5">
+                  <chart:DataMarkerLabelStyle.Font>
+                    <Font FontSize="12"/>
+                  </chart:DataMarkerLabelStyle.Font>
+                </chart:DataMarkerLabelStyle>
+              </chart:ChartDataMarker.LabelStyle>
+            </chart:ChartDataMarker>
+          </chart:PieSeries.DataMarker>
+        </chart:PieSeries>
+      </chart:SfChart>
+    </ContentPage>
+
+    <ContentPage Title="Distance">
+      <chart:SfChart x:Name="chartDistance" BackgroundColor="White">
+        <chart:SfChart.Legend>
+          <chart:ChartLegend/>
+        </chart:SfChart.Legend>
+        <chart:SfChart.Title>
+          <chart:ChartTitle Text="This week's distance" TextColor="Blue"/>
+        </chart:SfChart.Title>
+        <chart:PieSeries x:Name="DistanceSeries" EnableAnimation="True" Label="Distance" XBindingPath="Result" YBindingPath="Count">
+          <chart:PieSeries.DataMarker>
+            <chart:ChartDataMarker ShowLabel="True">
+              <chart:ChartDataMarker.LabelStyle>
+                <chart:DataMarkerLabelStyle TextColor="Blue" BackgroundColor="Aqua" Margin="5">
+                  <chart:DataMarkerLabelStyle.Font>
+                    <Font FontSize="12"/>
+                  </chart:DataMarkerLabelStyle.Font>
+                </chart:DataMarkerLabelStyle>
+              </chart:ChartDataMarker.LabelStyle>
+            </chart:ChartDataMarker>
+          </chart:PieSeries.DataMarker>
+        </chart:PieSeries>
+      </chart:SfChart>
+    </ContentPage>
+  </TabbedPage.Children>
+</TabbedPage>

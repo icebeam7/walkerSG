@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalkerSG.Pages.StartPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <OnPlatform x:Key="Priority1" x:TypeArguments="x:Int32" iOS="0" Android="1" WinPhone="1" />
+      <OnPlatform x:Key="Priority2" x:TypeArguments="x:Int32" iOS="1" Android="0" WinPhone="0" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ScrollView>
+    <ScrollView.BackgroundColor>
+      <OnPlatform x:TypeArguments="Color" WinPhone="#FFA500"></OnPlatform>
+    </ScrollView.BackgroundColor>
+    <StackLayout Padding="5">
+      <Label Text="Walker" FontSize="40"/>
+
+      <ContentView Padding="5">
+        <Label Text="Sedentarism is a lack of physical activity. Most of the time, it means that a person is only sitting, reading, using a computer, watching TV, and playing videogames for many hours with little or no physical exercise." LineBreakMode="WordWrap"/>
+      </ContentView>
+      <ContentView Padding="5">
+        <Label Text="Research and studies have proven that a sedentary lifestyle can lower life expectancy and increase the risk of suffering cardiovascular problems, diabetes, high blood presure, osteoporosis and obesity." LineBreakMode="WordWrap"/>
+      </ContentView>
+      <ContentView Padding="5">
+          <Label Text="Regular exercise and/or walking most days of the week keeps sedentary lifestyle out of your life. Taking movement breaks during your sedentary time is also important to increase circulation." LineBreakMode="WordWrap"/>
+      </ContentView>
+      <ContentView Padding="5">
+            <Label Text="Other tips include taking the stairs at the office instead of the lift and walking around. " LineBreakMode="WordWrap"/>
+      </ContentView>
+      <ContentView Padding="5">
+        <Label Text="Walker is a mobile app which reminds you to walk each certain period of time. By setting a goal, you'll receive an SMS or a call (free of charge, of course, just register your phone number) which will keep you on track." LineBreakMode="WordWrap"/>
+      </ContentView>
+      <ContentView Padding="5">
+            <Label Text="This app requires a Microsoft Band (wearable) in order to track your steps and get other kind of useful measurements, such as calories burned and distance walked."  LineBreakMode="WordWrap"/>
+      </ContentView>
+      <ContentView Padding="5">
+          <Label Text="Future versions of the app will include support for other wearables, such as Android Wear and Apple Watch."  LineBreakMode="WordWrap"/>
+      </ContentView>
+    </StackLayout>
+  </ScrollView>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="btnSettings" Activated="btnSettings_Clicked" Text="Settings" Order="Primary" Priority="{StaticResource Priority1}">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Assets\settings.png" Android="settings.png"/>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+    <ToolbarItem x:Name="btnTodayStats" Activated="btnTodayStats_Clicked" Text="Today" Order="Primary" Priority="{StaticResource Priority1}">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Assets\today.png" Android="today.png"/>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+    <ToolbarItem x:Name="btnWeekStats" Activated="btnWeekStats_Clicked" Text="Week" Order="Primary" Priority="{StaticResource Priority1}">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Assets\week.png" Android="week.png"/>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+    <ToolbarItem x:Name="btnMonthStats" Activated="btnMonthStats_Clicked" Text="Month" Order="Primary" Priority="{StaticResource Priority1}">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Assets\month.png" Android="month.png"/>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+    <ToolbarItem x:Name="btnAbout" Activated="btnAbout_Clicked" Text="About" Order="Primary" Priority="{StaticResource Priority1}">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Assets\about.png" Android="about.png"/>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+
+</ContentPage>

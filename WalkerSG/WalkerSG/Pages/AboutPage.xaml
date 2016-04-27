@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalkerSG.Pages.AboutPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <OnPlatform x:Key="Priority1" x:TypeArguments="x:Int32" iOS="0" Android="1" WinPhone="1" />
+      <OnPlatform x:Key="Priority2" x:TypeArguments="x:Int32" iOS="1" Android="0" WinPhone="0" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ScrollView>
+    <ScrollView.BackgroundColor>
+      <OnPlatform x:TypeArguments="Color" WinPhone="#FFA500"></OnPlatform>
+    </ScrollView.BackgroundColor>
+
+    <StackLayout Padding="5">
+      <StackLayout Padding="5">
+        <Label Text="About" FontSize="40"/>
+        <Label Text="This app was developed by PhD student Luis Beltran." LineBreakMode="WordWrap"/>
+        <Label Text="(beltran_prieto@fai.utb.cz)" LineBreakMode="WordWrap"/>
+        <Label Text="Faculty of Applied Informatics" LineBreakMode="WordWrap"/>
+        <Label Text="Tomas Bata University in Zlin" LineBreakMode="WordWrap"/>
+        <Label Text="Czech Republic" LineBreakMode="WordWrap"/>
+        <Label Text="April, 2016" LineBreakMode="WordWrap"/>
+      </StackLayout>
+      <ContentView Padding="5">
+        <Label Text="Special thanks to my colleagues from Instituto Tecnologico de Celaya (Guanajuato, Mexico) for their support!" LineBreakMode="WordWrap"/>
+      </ContentView>
+      <ContentView Padding="5">
+        <Label Text="Send me an email if you have any questions about this app, Artificial Intelligence, C# or Xamarin =)" LineBreakMode="WordWrap"/>
+      </ContentView>
+    </StackLayout>
+  </ScrollView>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="btnSendEmail" Activated="btnSendEmail_Clicked" Text="Email me" Order="Primary" Priority="{StaticResource Priority1}">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Assets\mail.png" Android="mail.png"/>
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+</ContentPage>

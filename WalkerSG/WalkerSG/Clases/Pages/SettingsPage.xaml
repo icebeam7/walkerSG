@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WalkerSG.Clases.Pages.SettingsPage">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <OnPlatform x:Key="Priority1" x:TypeArguments="x:Int32"
+         iOS="0" Android="1" WinPhone="1" />
+      <OnPlatform x:Key="Priority2" x:TypeArguments="x:Int32"
+         iOS="1" Android="0" WinPhone="0" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <StackLayout Padding="5">
+    <StackLayout.BackgroundColor>
+      <OnPlatform x:TypeArguments="Color" WinPhone="#FFA500"></OnPlatform>
+    </StackLayout.BackgroundColor>
+
+    <Label Text="Settings" FontSize="40" x:Name="lblTitle"/>
+
+    <StackLayout Orientation="Horizontal">
+      <Entry x:Name="txtPhoneNumber" Keyboard="Telephone" HorizontalTextAlignment="Start" Placeholder="Your phone number" >
+        <Button.WidthRequest>
+            <OnPlatform x:TypeArguments="x:Double" WinPhone="175" Android="200"/>
+        </Button.WidthRequest>
+      </Entry>
+
+      <Button x:Name="btnRequestCode" Text="Request code" Clicked="btnRequestCode_Clicked">
+        <Button.WidthRequest>
+          <OnPlatform x:TypeArguments="x:Double" WinPhone="125" Android="150"/>
+        </Button.WidthRequest>
+      </Button>
+    </StackLayout>
+
+    <Label Text="" x:Name="lblRequestMessage" />
+    
+    <StackLayout Orientation="Horizontal" IsVisible="False" x:Name="stpCode">
+      <Entry x:Name="txtCode" Keyboard="Numeric" HorizontalTextAlignment="Start" Placeholder="Code" >
+        <Entry.WidthRequest>
+          <OnPlatform x:TypeArguments="x:Double" WinPhone="100" Android="100"/>
+        </Entry.WidthRequest>
+      </Entry>
+      <Button x:Name="btnVerifyCode" Text="Verify" Clicked="btnVerifyCode_Clicked">
+        <Button.WidthRequest>
+          <OnPlatform x:TypeArguments="x:Double" WinPhone="100" Android="125"/>
+        </Button.WidthRequest>
+      </Button>
+      <Button x:Name="btnResendCode" Text="Resend" Clicked="btnResendCode_Clicked">
+        <Button.WidthRequest>
+          <OnPlatform x:TypeArguments="x:Double" WinPhone="100" Android="125"/>
+        </Button.WidthRequest>
+      </Button>
+    </StackLayout>
+
+    <Label Text="" x:Name="lblVerifyMessage" />
+    
+    <Label Text="Walker can track my steps from"/>
+    <TimePicker x:Name="tmpStart" PropertyChanged="tmpStart_TimeChanged" HorizontalOptions="Start" WidthRequest="300"/>
+    <Label Text="to"/>
+    <TimePicker x:Name="tmpEnd" PropertyChanged="tmpEnd_TimeChanged"  HorizontalOptions="Start" WidthRequest="300"/>
+
+    <Label>
+      <Label.Text>
+        <OnPlatform x:TypeArguments="x:String" WinPhone="" Android="Remind me to walk every"/>
+      </Label.Text>
+    </Label>
+    
+    <Picker x:Name="pckInterval" HorizontalOptions="Start" SelectedIndexChanged="pckInterval_SelectedIndexChanged">
+      <Picker.Title>
+        <OnPlatform x:TypeArguments="x:String" WinPhone="Remind me to walk every" Android="..."/>
+      </Picker.Title>
+      <Picker.Items>
+        <x:String>minute</x:String>
+        <x:String>5 minutes</x:String>
+        <x:String>15 minutes</x:String>
+        <x:String>hour</x:String>
+        <x:String>two hours</x:String>
+      </Picker.Items>
+    </Picker>
+
+    <StackLayout Orientation="Horizontal">
+      <Label Text="Goal: " VerticalOptions="CenterAndExpand"/>
+      <Slider x:Name="sldStepsGoal" Value="100" Maximum="1000" Minimum="10" WidthRequest="225" ValueChanged="sldStepsGoal_ValueChanged" VerticalOptions="CenterAndExpand"/>
+      <Label x:Name="lblStepsGoal" Text=" " VerticalOptions="CenterAndExpand"/>
+      <Label Text=" steps" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+
+    <Label>
+      <Label.Text>
+        <OnPlatform x:TypeArguments="x:String" WinPhone="" Android="If I don't reach my steps goal, then Walker will"/>
+      </Label.Text>
+    </Label>
+    
+    <Picker x:Name="pckReminderType" HorizontalOptions="Start">
+      <Picker.Title>
+        <OnPlatform x:TypeArguments="x:String" WinPhone="If I don't reach my steps goal, then Walker will" Android="..."/>
+      </Picker.Title>
+      <Picker.Items>
+        <x:String>send me an SMS</x:String>
+        <x:String>call me</x:String>
+        <x:String>do nothing</x:String>
+      </Picker.Items>
+    </Picker>
+
+    <StackLayout Orientation="Horizontal">
+      <Label Text="Congratulate me if I reach my goal?" VerticalOptions="Center"/>
+      <Switch x:Name="swtCongratulations" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="50" WidthRequest="200"/>
+    </StackLayout>
+  </StackLayout>
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem x:Name="btnSave" Activated="btnSave_Clicked" Text="Save" Order="Primary" Priority="{StaticResource Priority1}">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Assets\save.png" Android="save.png" />
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+    <ToolbarItem x:Name="btnStart" Activated="btnStart_Clicked" Text="Start" Order="Primary" Priority="{StaticResource Priority1}">
+      <ToolbarItem.Icon>
+        <OnPlatform x:TypeArguments="FileImageSource" WinPhone="Assets\play.png" Android="play.png" />
+      </ToolbarItem.Icon>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+</ContentPage>
